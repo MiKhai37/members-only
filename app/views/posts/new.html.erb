@@ -1,0 +1,24 @@
+<h1>New Post: </h1>
+
+<%= form_with model: @post do |form| %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>Something wrong happend while trying to create this post:</h2>
+
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label(:title, "Title:") %>
+  <%= form.text_field :title, placeholder: "Enter a title" %>
+  <br>
+  <%= form.label(:body, "Content:") %>
+  <%= form.text_area :body, placeholder: "Enter your post here" %>
+  <br>
+  <%= form.submit %>
+<% end %>
