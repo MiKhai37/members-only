@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  
+  before_action :authenticate_user!, only: %i[new create]
+
   def index
     @posts = Post.new
   end
@@ -8,7 +10,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user = current_user

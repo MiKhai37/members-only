@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserRefToPost < ActiveRecord::Migration[7.1]
   def change
     add_reference :posts, :user, null: false, foreign_key: true
