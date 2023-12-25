@@ -1,24 +1,21 @@
-<h1>Secret Posts</h1>
 
+<div>
   <% if user_signed_in? %>
-    <p>You are an authenticated member</p>
+    <p>Welcome <%= current_user.email %> !</p>
   <% else %>
     <p>Sorry, you are nobody</p>
     <p>You can only view the content of the post</p>
   <% end %>
+</div>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <h3><%= post.title %></h3>
-      <p><%= post.body %></p>
-      <% if user_signed_in? %>
-        <p>Author: <%= post.user.email %></p>
-      <% else %>
-        <p>Author: REDACTED</p>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Create a new post", new_post_path %>
+<div>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h4><%= post.title %></h4>
+        <p><%= post.body %></p>
+        <p>Author: <%= user_signed_in? ? post.user.email : "REDACTED" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
